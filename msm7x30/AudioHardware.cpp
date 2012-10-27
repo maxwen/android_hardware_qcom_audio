@@ -1833,7 +1833,7 @@ status_t AudioHardware::doAudioRouteOrMuteHTC(uint32_t device)
     }
 
     ALOGV("doAudioRouteOrMuteHTC() rx acdb %d, tx acdb %d", rx_acdb_id, tx_acdb_id);
-    ALOGV("doAudioRouteOrMuteHTC() device %x, mMode %d, mMicMute %d",
+    ALOGV("doAudioRouteOrMuteHTC() device %x, mMode %d, mMicMute %d", device, mMode, mMicMute);
 #ifdef WITH_QCOM_VOIP_OVER_MVS
     int inCall = (mMode == AudioSystem::MODE_IN_CALL) || (mMode == AudioSystem::MODE_IN_COMMUNICATION);
     return do_route_audio_rpc(device, inCall, mMicMute, rx_acdb_id, tx_acdb_id);
@@ -1865,7 +1865,7 @@ status_t AudioHardware::doAudioRouteOrMute(uint32_t device)
         int inCall = (mMode == AudioSystem::MODE_IN_CALL) || (mMode == AudioSystem::MODE_IN_COMMUNICATION);
         ret = do_route_audio_rpc(device, inCall, mMicMute, 0, 0);
 #else
-        ALOGV("doAudioRouteOrMute() device %d, mMode %d, mMicMute %d",
+        ALOGV("doAudioRouteOrMute() device %d, mMode %d, mMicMute %d", device, mMode, mMicMute);
         ret = do_route_audio_rpc(device, isInCall(), mMicMute, 0, 0);
 #endif
     } else
