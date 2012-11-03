@@ -93,23 +93,22 @@ static const uint32_t SND_DEVICE_CURRENT =-1;
 static const uint32_t SND_DEVICE_HANDSET = 0;
 static const uint32_t SND_DEVICE_SPEAKER = 1;
 static const uint32_t SND_DEVICE_HEADSET = 2;
-static const uint32_t SND_DEVICE_FM_HANDSET = 3;
-static const uint32_t SND_DEVICE_FM_SPEAKER = 4;
-static const uint32_t SND_DEVICE_FM_HEADSET = 5;
-static const uint32_t SND_DEVICE_BT = 6;
-static const uint32_t SND_DEVICE_HEADSET_AND_SPEAKER = 7;
+static const uint32_t SND_DEVICE_BT = 3;
+static const uint32_t SND_DEVICE_CARKIT = 4;
+static const uint32_t SND_DEVICE_TTY_FULL = 5;
+static const uint32_t SND_DEVICE_TTY_VCO = 6;
+static const uint32_t SND_DEVICE_TTY_HCO = 7;
 static const uint32_t SND_DEVICE_NO_MIC_HEADSET = 8;
-static const uint32_t SND_DEVICE_IN_S_SADC_OUT_HANDSET = 9;
-static const uint32_t SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE = 10;
-static const uint32_t SND_DEVICE_TTY_HEADSET = 11;
-static const uint32_t SND_DEVICE_TTY_HCO = 12;
-static const uint32_t SND_DEVICE_TTY_VCO = 13;
-static const uint32_t SND_DEVICE_TTY_FULL = 14;
+static const uint32_t SND_DEVICE_FM_HEADSET = 9;
+static const uint32_t SND_DEVICE_HEADSET_AND_SPEAKER = 10;
+static const uint32_t SND_DEVICE_FM_SPEAKER = 11;
+static const uint32_t SND_DEVICE_FM_HANDSET = 12;
+static const uint32_t SND_DEVICE_FM_TX = 13;
+static const uint32_t SND_DEVICE_FM_TX_AND_SPEAKER = 14;
 static const uint32_t SND_DEVICE_HDMI = 15;
-static const uint32_t SND_DEVICE_FM_TX = 16;
-static const uint32_t SND_DEVICE_FM_TX_AND_SPEAKER = 17;
-static const uint32_t SND_DEVICE_HEADPHONE_AND_SPEAKER = 18;
-static const uint32_t SND_DEVICE_CARKIT = 19;
+static const uint32_t SND_DEVICE_HEADPHONE_AND_SPEAKER = 16;
+static const uint32_t SND_DEVICE_IN_S_SADC_OUT_HANDSET = 17;
+static const uint32_t SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE = 18;
 static const uint32_t SND_DEVICE_HANDSET_BACK_MIC = 20;
 static const uint32_t SND_DEVICE_SPEAKER_BACK_MIC = 21;
 static const uint32_t SND_DEVICE_NO_MIC_HEADSET_BACK_MIC = 28;
@@ -121,31 +120,35 @@ static const uint32_t SND_DEVICE_USB_HEADSET = 253;
 
 static const uint32_t DEVICE_HANDSET_RX = 0;           /* handset_rx */
 static const uint32_t DEVICE_HANDSET_TX = 1;           /* handset_tx */
-static const uint32_t DEVICE_SPEAKER_RX = 2;           /* caf: speaker_stereo_rx
+static const uint32_t DEVICE_HEADSET_RX = 2;           /* headset_stereo_rx
+                                                          sam: headset_rx */
+static const uint32_t DEVICE_HEADSET_TX = 4;           /* headset_mono_tx
+                                                          sam: headset_tx */
+static const uint32_t DEVICE_FMRADIO_HANDSET_RX = 5;   /* fmradio_handset_rx */
+static const uint32_t DEVICE_SPEAKER_RX = 6;           /* speaker_sterteo_rx
                                                           htc: speaker_mono_rx
                                                           sam: speaker_rx */
-static const uint32_t DEVICE_SPEAKER_TX = 3;           /* caf: speaker_mono_tx
+static const uint32_t DEVICE_FMRADIO_SPEAKER_RX = 7;   /* fmradio_speaker_rx */
+static const uint32_t DEVICE_FMRADIO_HEADSET_RX = 8;   /* fmradio_headset_rx */
+static const uint32_t DEVICE_TTY_HEADSET_MONO_TX = 9;  /* tty_headset_mono_tx */
+static const uint32_t DEVICE_TTY_HEADSET_MONO_RX = 10; /* tty_headset_mono_rx */
+static const uint32_t DEVICE_SPEAKER_TX = 11;          /* speaker_mono_tx
                                                           sam: speaker_tx */
-static const uint32_t DEVICE_HEADSET_RX = 4;           /* caf: headset_stereo_rx
-                                                          sam: headset_rx */
-static const uint32_t DEVICE_HEADSET_TX = 5;           /* caf: headset_mono_tx
-                                                          sam: headset_tx */
-static const uint32_t DEVICE_FMRADIO_HANDSET_RX = 6;   /* fmradio_handset_rx */
-static const uint32_t DEVICE_FMRADIO_HEADSET_RX = 7;   /* fmradio_headset_rx */
-static const uint32_t DEVICE_FMRADIO_SPEAKER_RX = 8;   /* fmradio_speaker_rx */
-static const uint32_t DEVICE_DUALMIC_HANDSET_TX = 9;   /* handset_dual_mic_endfire_tx */
-static const uint32_t DEVICE_DUALMIC_SPEAKER_TX = 10;  /* speaker_dual_mic_endfire_tx */
-static const uint32_t DEVICE_TTY_HEADSET_MONO_RX = 11; /* tty_headset_mono_rx */
-static const uint32_t DEVICE_TTY_HEADSET_MONO_TX = 12; /* tty_headset_mono_tx */
-static const uint32_t DEVICE_SPEAKER_HEADSET_RX = 13;  /* caf: headset_stereo_speaker_stereo_rx
+static const uint32_t DEVICE_SPEAKER_HEADSET_RX = 12;  /* headset_stereo_speaker_stereo_rx
                                                           htc: headset_speaker_stereo_rx
                                                           sam: speaker_headset_rx */
-static const uint32_t DEVICE_FMRADIO_STEREO_TX = 14;
-static const uint32_t DEVICE_HDMI_STERO_RX = 15;       /* hdmi_stereo_rx */
-static const uint32_t DEVICE_FMRADIO_STEREO_RX = 16;
+static const uint32_t DEVICE_USB_HEADSET_RX = 13;      /* usb_headset_stereo_rx */
+static const uint32_t DEVICE_HAC_RX = 14;              /* hac_mono_rx */
+static const uint32_t DEVICE_ALT_RX = 15;              /* alt_mono_rx */
+static const uint32_t DEVICE_VR_HANDSET = 16;          /* handset_vr_tx */
 static const uint32_t DEVICE_BT_SCO_RX = 17;           /* bt_sco_rx */
 static const uint32_t DEVICE_BT_SCO_TX = 18;           /* bt_sco_tx */
-static const uint32_t DEVICE_COUNT = DEVICE_BT_SCO_TX +1;
+static const uint32_t DEVICE_DUALMIC_HANDSET_TX = 19;  /* handset_dual_mic_endfire_tx */
+static const uint32_t DEVICE_DUALMIC_SPEAKER_TX = 20;  /* speaker_dual_mic_endfire_tx */
+static const uint32_t DEVICE_FMRADIO_STEREO_TX = 21;
+static const uint32_t DEVICE_HDMI_STERO_RX = 22;       /* hdmi_stereo_rx */
+static const uint32_t DEVICE_FMRADIO_STEREO_RX = 23;
+static const uint32_t DEVICE_COUNT = DEVICE_FMRADIO_STEREO_RX +1;
 
 static bool support_aic3254 = true;
 static bool aic3254_enabled = true;
