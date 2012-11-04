@@ -386,7 +386,7 @@ void updateACDB(uint32_t new_rx_device, uint32_t new_tx_device,
 
 static status_t updateDeviceInfo(int rx_device,int tx_device,
                                  uint32_t rx_acdb_id, uint32_t tx_acdb_id) {
-    ALOGE("updateDeviceInfo: E rx_device %d and tx_device %d", rx_device, tx_device);
+    ALOGD("updateDeviceInfo: E rx_device %d and tx_device %d", rx_device, tx_device);
     bool isRxDeviceEnabled = false,isTxDeviceEnabled = false;
     Routing_table *temp_ptr,*temp_head;
     int tx_dev_prev = INVALID_DEVICE;
@@ -536,7 +536,7 @@ static status_t updateDeviceInfo(int rx_device,int tx_device,
         temp_head = temp_head->next;
     }
 
-    ALOGE("updateDeviceInfo: X cur_rx %d cur_tx %d", cur_rx, cur_tx);
+    ALOGD("updateDeviceInfo: X cur_rx %d cur_tx %d", cur_rx, cur_tx);
     return NO_ERROR;
 }
 
@@ -984,7 +984,7 @@ AudioStreamIn* AudioHardware::openInputStream(
 #ifdef WITH_QCOM_VOIP_OVER_MVS
     AudioStreamIn *in;
     if((devices == AudioSystem::DEVICE_IN_COMMUNICATION)&& (*sampleRate == 8000)) {
-        ALOGE("Create Audio stream Voip \n");
+        ALOGD("Create Audio stream Voip \n");
         AudioStreamInVoip* inVoip = new AudioStreamInVoip();
         status_t lStatus = NO_ERROR;
         lStatus =  inVoip->set(this, devices, format, channels, sampleRate, acoustic_flags);
@@ -3174,7 +3174,7 @@ status_t AudioHardware::AudioStreamOutDirect::set(
     uint32_t lChannels = pChannels ? *pChannels : 0;
     uint32_t lRate = pRate ? *pRate : 0;
 
-    ALOGE("set1  lFormat = %d lChannels= %u lRate = %u\n", lFormat, lChannels, lRate );
+    ALOGD("set1  lFormat = %d lChannels= %u lRate = %u\n", lFormat, lChannels, lRate );
     mHardware = hw;
 
     // fix up defaults
@@ -3889,8 +3889,8 @@ status_t AudioHardware::AudioStreamInMSM7x30::set(
             goto  Error;
           }
 
-          ALOGE("The Config buffer size is %d", config.buffer_size);
-          ALOGE("The Config buffer count is %d", config.buffer_count);
+          ALOGD("The Config buffer size is %d", config.buffer_size);
+          ALOGD("The Config buffer count is %d", config.buffer_count);
 
 
           struct msm_audio_aac_enc_config aac_enc_cfg;
@@ -4449,7 +4449,7 @@ status_t AudioHardware::AudioStreamInVoip::set(
         msm_set_voice_tx_mute(0);
         addToTable(0,cur_rx,cur_tx,VOICE_CALL,true);
 
-        ALOGE("open mvs driver");
+        ALOGD("open mvs driver");
         status = ::open(MVS_DEVICE, /*O_WRONLY*/ O_RDWR);
         if (status < 0) {
             ALOGE("Cannot open %s errno: %d",MVS_DEVICE, errno);
@@ -4457,7 +4457,7 @@ status_t AudioHardware::AudioStreamInVoip::set(
         }
 
         mFd = status;
-        ALOGE("VOPIstreamin : Save the fd \n");
+        ALOGD("VOPIstreamin : Save the fd \n");
         mHardware->mVoipFd = mFd;
         // Increment voip stream count
         mHardware->mNumVoipStreams++;
